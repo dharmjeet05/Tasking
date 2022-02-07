@@ -175,6 +175,10 @@ header h3 {
 
 /* CSS FOR: Signin page  */
 
+.mainForForm {
+    margin-bottom: 50px;
+}
+
 .mainForForm .container {
     display: flex;
     justify-content: center;
