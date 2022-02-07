@@ -231,3 +231,21 @@ header h3 {
     display: block;
     margin-bottom: 25px;
 }
+
+.mainForForm .forform form .gender {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.mainForForm .forform form .gender label {
+    padding: 0;
+    margin: 0;
+    margin-right: 8px;
+    font-size: 14px;
+}
+.mainForForm .forform form .gender input {
+    padding: 0;
+    margin: 0;
+    width: 14px;
+}
