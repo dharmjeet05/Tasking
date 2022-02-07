@@ -1,0 +1,174 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+/* CSS FOR: Common Css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background: #cad5e2;
+    color: black;
+}
+
+.container {
+    width: 75%;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+
+li {
+    list-style: none;
+}
+
+/* CSS FOR: Header  */
+
+header {
+    height: 60px;
+    background: whitesmoke;
+    box-shadow: 0px 10px 36px -4px rgba(0, 0, 0, 0.75);
+}
+
+header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+header nav .navbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+header nav .navbar li {
+    padding: 7px 10px;
+    margin-left: 35px;
+}
+header nav .navbar li:hover {
+    padding: 7px 10px;
+    margin-left: 35px;
+    background: #120e43;
+    border: #120e43;
+    border-radius: 5px;
+}
+header nav .navbar li:hover a {
+    color: whitesmoke;
+}
+
+header nav .navbar li.active {
+    padding: 7px 10px;
+    margin-left: 35px;
+    background: #120e43;
+    border: #120e43;
+    border-radius: 5px;
+}
+header nav .navbar li.active a {
+    color: whitesmoke;
+}
+
+header h3 {
+    font-size: 25px;
+}
+
+/* CSS FOR: Main Section  */
+
+.main {
+    margin-top: 50px;
+    /* background: red; */
+}
+
+.main .container {
+    display: flex;
+    align-items: flex-start;
+}
+
+.main .left {
+    width: 70%;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0px 10px 36px -4px rgba(0, 0, 0, 0.75);
+}
+
+.main .right {
+    width: 30%;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0px 10px 36px -4px rgba(0, 0, 0, 0.75);
+}
+
+.main .left h5 {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    font-size: 35px;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+}
+
+.main .left form {
+    width: 70%;
+}
+
+.main .left form input {
+    width: 90%;
+    height: 30px;
+    padding: 5px;
+    margin-bottom: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.main .left form button {
+    padding: 7px 10px;
+    background: #120e43;
+    border: #120e43;
+    border-radius: 5px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.main .left .tasklist {
+    margin-bottom: 25px;
+}
+
+.main .left .task {
+    /* font-size: 16px; */
+    background: #120e43;
+    color: whitesmoke;
+    padding: 5px;
+    width: 550px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.main .left .task .task-actions {
+    display: flex;
+    font-size: 10px;
+}
+
+.main .left .task .task-actions p {
+    margin-left: 10px;
+    cursor: pointer;
+}

@@ -4,9 +4,69 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./style.css" />
+
         <title>Tasking</title>
     </head>
     <body>
-        <h1>Tasking</h1>
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <h3>Tasking</h3>
+                    </div>
+                    <ul class="navbar">
+                        <li class="active"><a href="#">Dashboard</a></li>
+                        <li><a href="#">SignUp</a></li>
+                        <li><a href="#">SignIn</a></li>
+                        <li><a href="#">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="main">
+            <div class="container">
+                <div class="left">
+                    <h5>Add Your Task</h5>
+                    <form action="">
+                        <input type="text" name="task" />
+                        <button>Add</button>
+                    </form>
+                    <div class="tasklist">
+                        <div class="task">
+                            <div class="task-text">Task 1</div>
+                            <div class="task-actions">
+                                <p>Complate</p>
+                                <p>Delete</p>
+                            </div>
+                        </div>
+                        <div class="task">
+                            <div class="task-text">Task 2</div>
+                            <div class="task-actions">
+                                <p>Complate</p>
+                                <p>Delete</p>
+                            </div>
+                        </div>
+                        <div class="task">
+                            <div class="task-text">Task 3</div>
+                            <div class="task-actions">
+                                <p>Complate</p>
+                                <p>Delete</p>
+                            </div>
+                        </div>
+                        <div class="task">
+                            <div class="task-text">Task 4</div>
+                            <div class="task-actions">
+                                <p>Complate</p>
+                                <p>Delete</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">Right</div>
+            </div>
+        </section>
     </body>
 </html>
