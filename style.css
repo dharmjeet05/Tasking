@@ -47,6 +47,11 @@ header nav {
 header nav .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+header nav .navbar span {
+    font-weight: 600;
 }
 
 header nav .navbar li {
