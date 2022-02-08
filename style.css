@@ -178,7 +178,7 @@ header h3 {
     font-size: 10px;
 }
 
-.main .left .task .task-actions p {
+.main .left .task .task-actions img {
     margin-left: 10px;
     cursor: pointer;
 }
