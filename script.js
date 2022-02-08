@@ -70,7 +70,10 @@ addTaskBtn.addEventListener("click", () => {
             taskList = localItems;
         }
 
-        taskList.push(inputValue.value);
+        taskList.push({
+            task: inputValue.value,
+            status: 0,
+        });
         localStorage.setItem("localItem", JSON.stringify(taskList));
 
         inputValue.value = "";
@@ -92,13 +95,13 @@ function showList() {
         taskList = localItems;
     }
 
-    taskList.forEach((task, index) => {
+    taskList.forEach((taskItem, index) => {
         outPut += `
-                        <div class="task">
-                            <div class="task-text">${task}</div>
+                        <div class="task" class="${index}">
+                            <div class="task-text">${taskItem.task}</div>
                             <div class="task-actions">
                                 <img
-                                    onclick="completeTask()"
+                                    onclick="completeTask(${index})"
                                     src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
                                 />
                                 <img
@@ -127,4 +130,27 @@ function deleteTask(index) {
 function clearTask() {
     localStorage.removeItem("localItem");
     showList();
+}
+
+function completeTask(indexx) {
+    // if (localStorage.getItem("localItem")[index] == taskItem) {
+    //     console.log("Yes You Are Right");
+    // }
+
+    // console.log(index);
+
+    let task = taskList.find((item, index) => {
+        return index == indexx;
+    });
+    console.log(task);
+
+    // let taskItem = document.querySelector(".tasklist:nth-child(${indexx})");
+    // console.log(taskItem);
+
+    if (task.status == 0) {
+        console.log("HELLO");
+        localStorage.setItem("localItem[indexx].status", 1);
+    }
+
+    // console.log(taskList[indexx]);
 }
