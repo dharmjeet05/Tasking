@@ -20,9 +20,7 @@
                         <li class="active">
                             <a href="./index.html">Dashboard</a>
                         </li>
-                        <li><a href="./pages/signup.html">SignUp</a></li>
-                        <li><a href="./pages/signin.html">SignIn</a></li>
-                        <li><a href="#">Logout</a></li>
+                        <li><a href="#" onclick="logout()">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -79,5 +77,19 @@
                 </h5>
             </div>
         </footer>
+
+        <script>
+            (function () {
+                if (!localStorage.getItem("name")) {
+                    window.location.href = "signin.html";
+                }
+            })();
+
+            function logout() {
+                localStorage.removeItem("name");
+                localStorage.removeItem("email");
+                window.location.href = "signin.html";
+            }
+        </script>
     </body>
 </html>

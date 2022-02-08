@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-        <link rel="stylesheet" href="../style.css" />
+        <link rel="stylesheet" href="./style.css" />
 
         <title>Tasking</title>
     </head>
@@ -17,14 +17,12 @@
                         <h3>Tasking</h3>
                     </div>
                     <ul class="navbar">
-                        <li><a href="../index.html">Dashboard</a></li>
                         <li class="active">
                             <a href="./signup.html">SignUp</a>
                         </li>
                         <li>
                             <a href="./signin.html">SignIn</a>
                         </li>
-                        <li><a href="#">Logout</a></li>
                     </ul>
                 </nav>
             </div>
@@ -36,33 +34,40 @@
                     <h5>Signup</h5>
                     <form action="">
                         <label for="name">Name 🖊 :</label>
-                        <input type="text" name="name" />
+                        <input type="text" name="name" id="name" />
                         <label for="email">E-mail 📧 :</label>
-                        <input type="email" name="email" />
+                        <input type="email" name="email" id="email" />
                         <label for="mobile">Mobile 📱 :</label>
-                        <input type="number" name="mobile" />
+                        <input type="number" name="mobile" id="mobile" />
                         <label for="password">Password 🔒 :</label>
-                        <input type="password" name="password" />
+                        <input type="password" name="password" id="password" />
                         <label for="dob">Date Of Birth 🎂 :</label>
-                        <input type="date" name="dob" />
+                        <input type="date" name="dob" id="dob" />
                         <label for="gender">Gender 🚹 :</label>
                         <div class="gender">
                             <input
                                 type="radio"
+                                name="gender"
                                 id="male"
-                                name="fav_language"
                                 value="male"
                             />
                             <label for="html">Male</label><br />
                             <input
                                 type="radio"
+                                name="gender"
                                 id="female"
-                                name="fav_language"
                                 value="female"
                             />
                             <label for="css">Femele</label><br />
                         </div>
-                        <button>Submit</button>
+                        <button
+                            class="submitButton"
+                            type="button"
+                            role="button"
+                            onclick="signup()"
+                        >
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
@@ -76,5 +81,44 @@
                 </h5>
             </div>
         </footer>
+        <script>
+            function signup() {
+                let name, email, password, dob, gender;
+
+                name = document.getElementById("name").value;
+                email = document.getElementById("email").value;
+                password = document.getElementById("password").value;
+                dob = document.getElementById("dob").value;
+                gender = document.querySelector(
+                    'input[name="gender"]:checked'
+                ).value;
+
+                let user_data = new Array();
+
+                user_data = JSON.parse(localStorage.getItem("users"))
+                    ? JSON.parse(localStorage.getItem("users"))
+                    : [];
+
+                if (
+                    user_data.some((v) => {
+                        return v.email == email;
+                    })
+                ) {
+                    alert("Duplicate data");
+                } else {
+                    user_data.push({
+                        name: name,
+                        email: email,
+                        password: password,
+                        dob: dob,
+                        gender: gender,
+                    });
+
+                    localStorage.setItem("users", JSON.stringify(user_data));
+
+                    window.location.href = "signin.html";
+                }
+            }
+        </script>
     </body>
 </html>

@@ -219,7 +219,7 @@ header h3 {
     border-radius: 5px;
 }
 
-.mainForForm .forform form button {
+.mainForForm .forform form .submitButton {
     padding: 7px 10px;
     background: #120e43;
     border: #120e43;
@@ -228,7 +228,8 @@ header h3 {
     cursor: pointer;
     font-weight: 600;
     align-items: center;
-    display: block;
+    display: flex;
+    justify-content: center;
     margin-bottom: 25px;
 }
 
