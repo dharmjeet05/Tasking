@@ -155,6 +155,19 @@ header h3 {
     cursor: pointer;
     font-weight: 600;
 }
+.main .left .clearButton button {
+    padding: 7px 10px;
+    background: #120e43;
+    border: #120e43;
+    border-radius: 5px;
+    color: whitesmoke;
+    cursor: pointer;
+    font-weight: 600;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
 
 .main .left .tasklist {
     margin-bottom: 25px;
