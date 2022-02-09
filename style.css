@@ -309,6 +309,10 @@ header h3 {
     border-radius: 20px;
     background: #120e43;
     color: white;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .profileData h3 {
@@ -320,6 +324,20 @@ header h3 {
     font-weight: 600;
     /* font-size: 12px; */
     margin-left: 14px;
+}
+
+.profileData a {
+    margin-bottom: 20px;
+    padding: 14px;
+    border-radius: 20px;
+    border: 1px solid white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* CSS FOR: Footer  */

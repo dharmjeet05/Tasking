@@ -42,31 +42,22 @@
         <section class="mainForForm">
             <div class="container">
                 <div class="forform">
-                    <h5>Profile</h5>
-                    <div class="profileData">
-                        <h3>
-                            Name :
-                            <span id="profileName"></span>
-                        </h3>
-                        <h3>
-                            E-mail :
-                            <span id="profileEmail"></span>
-                        </h3>
-                        <h3>Mobile : <span id="profileMobile"></span></h3>
-                        <h3>Gender : <span id="profileGender"></span></h3>
-                        <h3>Date of birth : <span id="profileDob"></span></h3>
-                        <a href="editProfile.html">Edit Profile</a>
-                    </div>
-                    <form action="" method="post" id="myform">
-                        <label for="password">Password 🔒 :</label>
-                        <input type="password" name="password" id="password" />
+                    <h5>Edit Profile</h5>
+                    <form action="">
+                        <label for="name">Name 🖊 :</label>
+                        <input type="text" name="name" id="name" />
+                        <label for="mobile">Mobile 📱 :</label>
+                        <input type="number" name="mobile" id="mobile" />
+                        <label for="dob">Date Of Birth 🎂 :</label>
+                        <input type="date" name="dob" id="dob" />
+
                         <button
                             class="submitButton"
                             type="button"
                             role="button"
-                            onclick="changePassword()"
+                            onclick="updateProfile()"
                         >
-                            Change My Password
+                            Submit
                         </button>
                     </form>
                 </div>
@@ -96,36 +87,19 @@
                 window.location.href = "signin.html";
             }
 
-            function displayProfileData() {
-                let name, email, mobile, gender, dob;
+            let name, mobile, dob;
 
-                name = document.getElementById("profileName");
-                email = document.getElementById("profileEmail");
-                mobile = document.getElementById("profileMobile");
-                gender = document.getElementById("profileGender");
-                dob = document.getElementById("profileDob");
+            name = document.getElementById("name");
+            mobile = document.getElementById("mobile");
+            dob = document.getElementById("dob");
 
-                let getUser = localStorage.getItem("email");
+            // window.addEventListener("load", (event) => {
+            //     event.preventDefault();
 
-                let users = JSON.parse(localStorage.getItem("users"));
+            //     displayFields();
+            // });
 
-                let originalUser = users.find((item) => {
-                    return item.email == getUser;
-                });
-                // console.log(originalUser);
-
-                name.innerHTML = originalUser.name;
-                email.innerHTML = originalUser.email;
-                mobile.innerHTML = originalUser.mobile;
-                gender.innerHTML = originalUser.gender;
-                dob.innerHTML = originalUser.dob;
-            }
-            displayProfileData();
-
-            function changePassword() {
-                let password = document.getElementById("password").value;
-                console.log(password);
-
+            function displayFields() {
                 let getUser = localStorage.getItem("email");
 
                 let users = JSON.parse(localStorage.getItem("users"));
@@ -134,18 +108,36 @@
                     return item.email == getUser;
                 });
                 console.log(originalUser);
-                console.log(users);
+
+                name.value = originalUser.name;
+                mobile.value = originalUser.mobile;
+                dob.value = originalUser.dob;
+            }
+            displayFields();
+
+            function updateProfile() {
+                let getUser = localStorage.getItem("email");
+
+                let users = JSON.parse(localStorage.getItem("users"));
+
+                let originalUser = users.find((item) => {
+                    return item.email == getUser;
+                });
+                // console.log(originalUser);
+                // console.log(users);
 
                 users.forEach((user, index) => {
-                    if (user.email == localStorage.getItem("email")) {
-                        users[index].password = password;
+                    if (user.name == localStorage.getItem("name")) {
+                        users[index].name = name.value;
+                        users[index].mobile = mobile.value;
+                        users[index].dob = dob.value;
                     }
-                    localStorage.setItem("users", JSON.stringify(users));
                 });
+                localStorage.setItem("users", JSON.stringify(users));
 
-                document.getElementById("myform").reset();
+                alert("Profile updated successfully");
 
-                alert("Password changed successfully");
+                window.location.href = "profile.html";
             }
         </script>
     </body>
