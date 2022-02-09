@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./style.css" />
+
+        <title>Tasking</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <h3><a href="./index.html">Tasking</a></h3>
+                    </div>
+                    <ul class="navbar">
+                        <p>
+                            Hello,
+                            <span>
+                                <script>
+                                    document.write(
+                                        localStorage.getItem("name")
+                                    );
+                                </script>
+                            </span>
+                        </p>
+                        <li>
+                            <a href="./index.html">Dashboard</a>
+                        </li>
+                        <li class="active">
+                            <a href="./profile.html">Profile</a>
+                        </li>
+                        <li><a href="#" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="mainForForm">
+            <div class="container">
+                <div class="forform">
+                    <h5>Profile</h5>
+                    <div class="profileData">
+                        <h3>Name : <span>Dharmjeet Vaishnav</span></h3>
+                        <h3>Epmail : <span>jeet@gmail.com</span></h3>
+                        <h3>Mobile : <span>1212121212</span></h3>
+                        <h3>Gender : <span>male</span></h3>
+                        <h3>Date of birth : <span>male</span></h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <h5>
+                    Developed by
+                    <a href="https://dharmjeet.com">Dharmjeet Vaishnav</a>
+                </h5>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                if (!localStorage.getItem("name")) {
+                    window.location.href = "signin.html";
+                }
+            })();
+        </script>
+    </body>
+</html>
