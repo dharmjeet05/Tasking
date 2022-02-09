@@ -115,7 +115,7 @@
                     alert("Please enter maximum 20 character in name field");
                 } else if (!email.match(validemail)) {
                     alert("Please enter valid email address");
-                } else if (!mobile.length === 10) {
+                } else if (!(mobile.length === 10)) {
                     alert("Please enter valid mobile number");
                 } else if (
                     user_data.some((v) => {

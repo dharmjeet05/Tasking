@@ -60,6 +60,7 @@ function logout() {
 
 const inputValue = document.getElementById("task");
 const addTaskBtn = document.getElementsByClassName("addButton")[0];
+let taskItems;
 
 addTaskBtn.addEventListener("click", () => {
     if (!inputValue.value.trim() == "") {
@@ -82,6 +83,7 @@ addTaskBtn.addEventListener("click", () => {
         alert("Please enter task");
     }
 
+    console.log(taskItems);
     showList();
 });
 
@@ -97,24 +99,29 @@ function showList() {
     }
 
     taskList.forEach((taskItem, index) => {
+        console.log(taskItem.status === 0);
         outPut += `
-                        <div class="task" class="${index}">
+                        <div class="${
+                            taskItem.status === 0 ? "task" : "task active"
+                        }"> 
                             <div class="task-text">${taskItem.task}</div>
                             <div class="task-actions">
                             <img
-                            onclick="deleteTask(${index})"
-                            src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
+                                onclick="completeTask(${index})"
+                                src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
+                            />
+                            <img
+                                onclick="deleteTask(${index})"
+                                src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
                             />
                             </div>
                             </div>
                             `;
     });
 
-    // <img
-    //     onclick="completeTask(${index})"
-    //     src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
-    // />
     taskListShow.innerHTML = outPut;
+    taskItems = document.querySelectorAll(".task");
+    console.log(taskItems);
 }
 showList();
 
@@ -133,28 +140,21 @@ function clearTask() {
     showList();
 }
 
-// function completeTask(indexx) {
-//     // if (localStorage.getItem("localItem")[index] == taskItem) {
-//     //     console.log("Yes You Are Right");
-//     // }
+function completeTask(indexx) {
+    let mainItem = JSON.parse(localStorage.getItem("localItem"));
+    mainItem[indexx].status = mainItem[indexx].status == 0 ? 1 : 0;
 
-//     // console.log(index);
+    localStorage.setItem("localItem", JSON.stringify(mainItem));
 
-//     let task = taskList.find((item, index) => {
-//         return index == indexx;
-//     });
-//     console.log(task);
-
-//     // let taskItem = document.querySelector(".tasklist:nth-child(${indexx})");
-//     // console.log(taskItem);
-
-//     if (task.status == 0) {
-//         console.log("HELLO");
-//         localStorage.setItem("localItem[indexx].status", 1);
-//     }
-
-//     // console.log(taskList[indexx]);
-// }
+    if (
+        taskItems[indexx].classList.contains("active") &&
+        mainItem[indexx].status === 0
+    ) {
+        taskItems[indexx].classList.remove("active");
+    } else {
+        taskItems[indexx].classList.add("active");
+    }
+}
 
 // Weather app
 function weatherApp() {
@@ -212,7 +212,6 @@ function weatherApp() {
 weatherApp();
 
 // GIF app
-
 setInterval(() => {
     function gifApp() {
         fetch(
@@ -230,6 +229,7 @@ setInterval(() => {
     }
 }, 5000);
 
+// Time and Date
 setInterval(() => {
     var today = new Date();
     var date =

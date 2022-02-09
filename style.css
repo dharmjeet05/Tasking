@@ -187,6 +187,10 @@ header h3 {
     margin-bottom: 12px;
 }
 
+.main .left .active {
+    background-color: green;
+}
+
 .main .left .task .task-actions {
     display: flex;
     font-size: 10px;
