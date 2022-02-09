@@ -58,7 +58,7 @@
                         <a href="editProfile.html">Edit Profile</a>
                     </div>
                     <form action="" method="post" id="myform">
-                        <label for="password">Password 🔒 :</label>
+                        <label for="password">Enter New Password 🔒 :</label>
                         <input type="password" name="password" id="password" />
                         <button
                             class="submitButton"
@@ -92,7 +92,7 @@
             function logout() {
                 localStorage.removeItem("name");
                 localStorage.removeItem("email");
-                localStorage.removeItem("localItem");
+                // localStorage.removeItem("localItem");
                 window.location.href = "signin.html";
             }
 
