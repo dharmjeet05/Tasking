@@ -196,6 +196,25 @@ header h3 {
     cursor: pointer;
 }
 
+.main .right {
+    margin-bottom: 50px;
+}
+
+.main .right .api-card {
+    background: #120e43;
+    width: 240px;
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color: white;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 /* CSS FOR: Signin page  */
 
 .mainForForm {
