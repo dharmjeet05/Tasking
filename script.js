@@ -7,6 +7,7 @@
 function logout() {
     localStorage.removeItem("name");
     localStorage.removeItem("email");
+    localStorage.removeItem("localItem");
     window.location.href = "signin.html";
 }
 
