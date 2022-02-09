@@ -89,15 +89,18 @@
             })();
 
             function signup() {
-                let name, email, password, dob, gender;
+                let name, email, mobile, password, dob, gender;
 
                 name = document.getElementById("name").value;
                 email = document.getElementById("email").value;
+                mobile = document.getElementById("mobile").value;
                 password = document.getElementById("password").value;
                 dob = document.getElementById("dob").value;
                 gender = document.querySelector(
                     'input[name="gender"]:checked'
                 ).value;
+
+                console.log(mobile.length);
 
                 let user_data = new Array();
 
@@ -105,7 +108,16 @@
                     ? JSON.parse(localStorage.getItem("users"))
                     : [];
 
-                if (
+                var validemail =
+                    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+
+                if (name.length > 20) {
+                    alert("Please enter maximum 20 character in name field");
+                } else if (!email.match(validemail)) {
+                    alert("Please enter valid email address");
+                } else if (!mobile.length === 10) {
+                    alert("Please enter valid mobile number");
+                } else if (
                     user_data.some((v) => {
                         return v.email == email;
                     })
@@ -115,6 +127,7 @@
                     user_data.push({
                         name: name,
                         email: email,
+                        mobile: mobile,
                         password: password,
                         dob: dob,
                         gender: gender,
