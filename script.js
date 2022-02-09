@@ -52,7 +52,6 @@ function showList() {
     }
 
     taskList.forEach((taskItem, index) => {
-        console.log(taskItem.status === 0);
         outPut += `
                         <div class="${
                             taskItem.status === 0 ? "task" : "task active"
@@ -64,14 +63,18 @@ function showList() {
                                 src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
                             />
                             <img
-                                onclick="deleteTask(${index})"
-                                src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
+                            onclick="deleteTask(${index})"
+                            src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
                             />
                             </div>
                             </div>
                             `;
     });
 
+    // <img
+    //     onclick="editTask(${index})"
+    //     src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
+    // />
     taskListShow.innerHTML = outPut;
     taskItems = document.querySelectorAll(".task");
     console.log(taskItems);
@@ -109,7 +112,24 @@ function completeTask(indexx) {
     }
 }
 
+// function editTask(indexx) {
+//     // inputValue.value = task;
+//     // console.log(index);
+
+//     let allTasks = JSON.parse(localStorage.getItem("localItem"));
+//     console.log(allTasks);
+
+//     let originalTask = allTasks.find((item, index) => {
+//         return index == indexx;
+//     });
+
+//     console.log(originalTask);
+
+//     document.getElementById("task").value = originalTask.task;
+// }
+
 // Weather app
+
 function weatherApp() {
     let lat;
     let long;
