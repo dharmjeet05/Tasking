@@ -158,39 +158,60 @@ function completeTask(indexx) {
 
 // Weather app
 function weatherApp() {
-    // let lat;
-    // let long;
-    // function getLocation() {
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition((position) => {
-    //             lat = position.coords.latitude;
-    //             long = position.coords.longitude;
-    //         });
-    //     }
-    // }
-    // getLocation();
+    let lat;
+    let long;
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                lat = position.coords.latitude;
+                long = position.coords.longitude;
+                fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&units=metric&appid=ac5d68ef6e7594df77ca70cc0fa69424`
+                )
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const name = data.name;
+                        const description = data.weather[0].description;
+                        const temp = data.main.temp;
+                        const speed = data.wind.speed;
+                        console.log(name, temp, description, speed);
+
+                        document.querySelector(".city").innerHTML =
+                            "Weather in " + name;
+                        document.querySelector(".temp").innerHTML = temp + "°C";
+                        document.querySelector(".desc").innerHTML = description;
+                        document.querySelector(".wind").innerHTML =
+                            "Wind speed : " + speed;
+                    })
+                    .catch((error) => console.log(error));
+            });
+        }
+    }
+    getLocation();
 
     // if (lat) {
     //     let weather = {
     //         apikey: "ac5d68ef6e7594df77ca70cc0fa69424",
     // function fetchWeather() {
     // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
-    fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=surendranagar&units=metric&appid=ac5d68ef6e7594df77ca70cc0fa69424`
-    )
-        .then((response) => response.json())
-        .then((data) => {
-            const name = data.name;
-            const description = data.weather[0].description;
-            const temp = data.main.temp;
-            const speed = data.wind.speed;
-            console.log(name, temp, description, speed);
+    // console.log(lat, long);
+    // fetch(
+    //     `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=ac5d68ef6e7594df77ca70cc0fa69424`
+    // )
+    //     .then((response) => response.json())
+    //     .then((data) => {
+    //         const name = data.name;
+    //         const description = data.weather[0].description;
+    //         const temp = data.main.temp;
+    //         const speed = data.wind.speed;
+    //         console.log(name, temp, description, speed);
 
-            document.querySelector(".city").innerHTML = "Weather in " + name;
-            document.querySelector(".temp").innerHTML = temp + "°C";
-            document.querySelector(".desc").innerHTML = description;
-            document.querySelector(".wind").innerHTML = "Wind speed : " + speed;
-        });
+    //         document.querySelector(".city").innerHTML = "Weather in " + name;
+    //         document.querySelector(".temp").innerHTML = temp + "°C";
+    //         document.querySelector(".desc").innerHTML = description;
+    //         document.querySelector(".wind").innerHTML = "Wind speed : " + speed;
+    //     })
+    //     .catch((error) => console.log(error));
     // }
     // fetchWeather();
 
