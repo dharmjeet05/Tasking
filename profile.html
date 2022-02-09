@@ -60,6 +60,18 @@
                             Date of birth : <span id="profileDob">male</span>
                         </h3>
                     </div>
+                    <form action="" method="post" id="myform">
+                        <label for="password">Password 🔒 :</label>
+                        <input type="password" name="password" id="password" />
+                        <button
+                            class="submitButton"
+                            type="button"
+                            role="button"
+                            onclick="changePassword()"
+                        >
+                            Change My Password
+                        </button>
+                    </form>
                 </div>
             </div>
         </section>
@@ -103,7 +115,7 @@
                 let originalUser = users.find((item) => {
                     return item.name == getUser;
                 });
-                console.log(originalUser);
+                // console.log(originalUser);
 
                 name.innerHTML = originalUser.name;
                 email.innerHTML = originalUser.email;
@@ -112,6 +124,32 @@
                 dob.innerHTML = originalUser.dob;
             }
             displayProfileData();
+
+            function changePassword() {
+                let password = document.getElementById("password").value;
+                console.log(password);
+
+                let getUser = localStorage.getItem("name");
+
+                let users = JSON.parse(localStorage.getItem("users"));
+
+                let originalUser = users.find((item) => {
+                    return item.name == getUser;
+                });
+                console.log(originalUser);
+                console.log(users);
+
+                users.forEach((user, index) => {
+                    if (user.name == localStorage.getItem("name")) {
+                        users[index].password = password;
+                    }
+                    localStorage.setItem("users", JSON.stringify(users));
+                });
+
+                document.getElementById("myform").reset();
+
+                alert("Password changed successfully");
+            }
         </script>
     </body>
 </html>
