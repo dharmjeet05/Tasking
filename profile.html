@@ -44,11 +44,21 @@
                 <div class="forform">
                     <h5>Profile</h5>
                     <div class="profileData">
-                        <h3>Name : <span>Dharmjeet Vaishnav</span></h3>
-                        <h3>Epmail : <span>jeet@gmail.com</span></h3>
-                        <h3>Mobile : <span>1212121212</span></h3>
-                        <h3>Gender : <span>male</span></h3>
-                        <h3>Date of birth : <span>male</span></h3>
+                        <h3>
+                            Name :
+                            <span id="profileName">Dharmjeet Vaishnav</span>
+                        </h3>
+                        <h3>
+                            E-mail :
+                            <span id="profileEmail">jeet@gmail.com</span>
+                        </h3>
+                        <h3>
+                            Mobile : <span id="profileMobile">1212121212</span>
+                        </h3>
+                        <h3>Gender : <span id="profileGender">male</span></h3>
+                        <h3>
+                            Date of birth : <span id="profileDob">male</span>
+                        </h3>
                     </div>
                 </div>
             </div>
@@ -69,6 +79,39 @@
                     window.location.href = "signin.html";
                 }
             })();
+
+            function logout() {
+                localStorage.removeItem("name");
+                localStorage.removeItem("email");
+                localStorage.removeItem("localItem");
+                window.location.href = "signin.html";
+            }
+
+            function displayProfileData() {
+                let name, email, mobile, gender, dob;
+
+                name = document.getElementById("profileName");
+                email = document.getElementById("profileEmail");
+                mobile = document.getElementById("profileMobile");
+                gender = document.getElementById("profileGender");
+                dob = document.getElementById("profileDob");
+
+                let getUser = localStorage.getItem("name");
+
+                let users = JSON.parse(localStorage.getItem("users"));
+
+                let originalUser = users.find((item) => {
+                    return item.name == getUser;
+                });
+                console.log(originalUser);
+
+                name.innerHTML = originalUser.name;
+                email.innerHTML = originalUser.email;
+                mobile.innerHTML = originalUser.mobile;
+                gender.innerHTML = originalUser.gender;
+                dob.innerHTML = originalUser.dob;
+            }
+            displayProfileData();
         </script>
     </body>
 </html>
