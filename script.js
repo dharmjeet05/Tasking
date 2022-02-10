@@ -227,7 +227,7 @@ setInterval(() => {
 
         gifDiv.innerHTML = `<img src="${url}" style="width: 180px;" alt="gif">`;
     }
-}, 5000);
+}, 20000);
 
 // Time and Date
 setInterval(() => {
