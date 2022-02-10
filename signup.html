@@ -96,11 +96,9 @@
                 mobile = document.getElementById("mobile").value;
                 password = document.getElementById("password").value;
                 dob = document.getElementById("dob").value;
-                gender = document.querySelector(
-                    'input[name="gender"]:checked'
-                ).value;
+                gender = document.querySelector('input[name="gender"]:checked');
 
-                console.log(mobile.length);
+                console.log(gender);
 
                 let user_data = new Array();
 
@@ -111,12 +109,18 @@
                 var validemail =
                     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
-                if (name.length > 20) {
+                if (name == "") {
+                    alert("Please enter name");
+                } else if (password.length < 5) {
+                    alert("Please enter minimum 5 characters of password");
+                } else if (name.length > 20) {
                     alert("Please enter maximum 20 character in name field");
                 } else if (!email.match(validemail)) {
                     alert("Please enter valid email address");
                 } else if (!(mobile.length === 10)) {
                     alert("Please enter valid mobile number");
+                } else if (gender == null) {
+                    alert("Please enter gender detail");
                 } else if (
                     user_data.some((v) => {
                         return v.email == email;
