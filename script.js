@@ -248,21 +248,34 @@ function weatherApp() {
 weatherApp();
 
 // GIF app
+function gifApp() {
+    fetch(
+        `https://api.giphy.com/v1/gifs/random?api_key=w5kVyG3lzcm2yQNbIHsIImohiaZCklHH`
+    )
+        .then((response) => response.json())
+        .then((data) => displayGif(data.data.images.downsized_medium.url));
+}
+function displayGif(url) {
+    const gifDiv = document.querySelector(".gif");
+
+    gifDiv.innerHTML = `<img src="${url}" style="width: 180px;" alt="gif">`;
+}
+gifApp();
 setInterval(() => {
-    function gifApp() {
-        fetch(
-            `https://api.giphy.com/v1/gifs/random?api_key=w5kVyG3lzcm2yQNbIHsIImohiaZCklHH`
-        )
-            .then((response) => response.json())
-            .then((data) => displayGif(data.data.images.downsized_medium.url));
-    }
+    // function gifApp() {
+    //     fetch(
+    //         `https://api.giphy.com/v1/gifs/random?api_key=w5kVyG3lzcm2yQNbIHsIImohiaZCklHH`
+    //     )
+    //         .then((response) => response.json())
+    //         .then((data) => displayGif(data.data.images.downsized_medium.url));
+    // }
     gifApp();
 
-    function displayGif(url) {
-        const gifDiv = document.querySelector(".gif");
+    // function displayGif(url) {
+    //     const gifDiv = document.querySelector(".gif");
 
-        gifDiv.innerHTML = `<img src="${url}" style="width: 180px;" alt="gif">`;
-    }
+    //     gifDiv.innerHTML = `<img src="${url}" style="width: 180px;" alt="gif">`;
+    // }
 }, 20000);
 
 // Time and Date
