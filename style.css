@@ -191,6 +191,10 @@ header h3 {
     background-color: green;
 }
 
+.main .left .active .task-text {
+    text-decoration: line-through;
+}
+
 .main .left .task .task-actions {
     display: flex;
     font-size: 10px;
