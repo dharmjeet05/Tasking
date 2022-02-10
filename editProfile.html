@@ -135,6 +135,8 @@
                 });
                 localStorage.setItem("users", JSON.stringify(users));
 
+                localStorage.setItem("name", originalUser.name);
+
                 alert("Profile updated successfully");
 
                 window.location.href = "profile.html";
