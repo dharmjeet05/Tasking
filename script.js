@@ -46,7 +46,11 @@ addTaskBtn.addEventListener("click", () => {
 
 function showList() {
     let outPut = "";
+    let outPutTwo = "";
+    let outputMiddleText = "";
     let taskListShow = document.querySelector(".tasklist");
+    // let uncompletedDiv = document.querySelector(".uncompleted");
+    // let completedDiv = document.querySelector(".completed");
     let localItems = JSON.parse(localStorage.getItem("localItem"));
 
     if (localItems === null) {
@@ -56,16 +60,20 @@ function showList() {
     }
 
     taskList.forEach((taskItem, index) => {
-        outPut += `
-                        <div class="${
-                            taskItem.status === 0 ? "task" : "task active"
-                        }"> 
+        if (taskItem.status === 1) {
+            outputMiddleText = `<h3>Completed Task</h3>`;
+        }
+
+        if (taskItem.status === 0) {
+            outPut += `
+                        <div class="task"> 
                             <div class="task-text">${taskItem.task}</div>
                             <div class="task-actions">
-                            <img
+                            <img 
                                 onclick="completeTask(${index})"
-                                src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
+                                src="https://img.icons8.com/glyph-neue/34/ffffff/checked.png"
                             />
+                            
                             <a href="editTask.html" onclick="this.href='editTask.html?index=${index}'">
                             <img
                                 src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
@@ -78,12 +86,55 @@ function showList() {
                             </div>
                             </div>
                             `;
+        } else {
+            outPutTwo += `
+                        <div class="task active">
+                            <div class="task-text">${taskItem.task}</div>
+                            <div class="task-actions">
+                            <img
+                                onclick="completeTask(${index})"
+                                src="https://img.icons8.com/glyph-neue/34/ffffff/checked.png"
+                            />
+
+                            <a href="editTask.html" onclick="this.href='editTask.html?index=${index}'">
+                            <img
+                                src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
+                            />
+                            </a>
+                            <img
+                                onclick="deleteTask(${index})"
+                                src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
+                            />
+                            </div>
+                            </div>
+                            `;
+        }
+        // console.log(taskItem);
+        // if (taskItem.status === 0) {
+        //     uncompletedDiv.innerHTML = outPut;
+        // }
     });
+    // <img
+    //     onclick="completeTask(${index})"
+    //     src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
+    // />;
     // onclick="editTask(${index})"
 
-    taskListShow.innerHTML = outPut;
+    mainOutput = outPut + outputMiddleText + outPutTwo;
+    taskListShow.innerHTML = mainOutput;
     taskItems = document.querySelectorAll(".task");
-    console.log(taskItems);
+    var taskItemArr = Array.from(taskItems);
+    console.log(taskItemArr);
+
+    // taskItemArr.forEach((task, index) => {
+    //     console.log(task.cl);
+    //     // if (task[index].classList[1] !== "active") {
+    //     //     uncompletedDiv.innerHTML = outPut;
+    //     // }
+    // });
+
+    //     taskItemArr.forEach((task, index) =>{
+    // }
 }
 showList();
 
@@ -116,26 +167,11 @@ function completeTask(indexx) {
     } else {
         taskItems[indexx].classList.add("active");
     }
+
+    showList();
 }
 
-// function editTask(indexx) {
-//     // inputValue.value = task;
-//     // console.log(index);
-
-//     let allTasks = JSON.parse(localStorage.getItem("localItem"));
-//     console.log(allTasks);
-
-//     let originalTask = allTasks.find((item, index) => {
-//         return index == indexx;
-//     });
-
-//     console.log(originalTask);
-
-//     document.getElementById("task").value = originalTask.task;
-// }
-
 // Weather app
-
 function weatherApp() {
     let lat;
     let long;
