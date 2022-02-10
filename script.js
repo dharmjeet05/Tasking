@@ -76,7 +76,7 @@ function showList() {
                             
                             <a href="editTask.html" onclick="this.href='editTask.html?index=${index}'">
                             <img
-                                src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
+                                src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/ffffff/external-edit-interface-kiranshastry-solid-kiranshastry-1.png"
                             />
                             </a>
                             <img
@@ -98,7 +98,7 @@ function showList() {
 
                             <a href="editTask.html" onclick="this.href='editTask.html?index=${index}'">
                             <img
-                                src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
+                                src="https://img.icons8.com/external-kiranshastry-solid-kiranshastry/30/ffffff/external-edit-interface-kiranshastry-solid-kiranshastry-1.png"
                             />
                             </a>
                             <img
