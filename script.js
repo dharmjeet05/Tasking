@@ -25,7 +25,11 @@ addTaskBtn.addEventListener("click", () => {
             taskList = localItems;
         }
 
+        let randomNumber = Math.round(Math.random() * 100000);
+        console.log(randomNumber);
+
         taskList.push({
+            id: randomNumber,
             task: inputValue.value,
             status: 0,
         });
@@ -62,19 +66,21 @@ function showList() {
                                 onclick="completeTask(${index})"
                                 src="https://img.icons8.com/ios-glyphs/30/ffffff/check-all.png"
                             />
+                            <a href="editTask.html" onclick="this.href='editTask.html?index=${index}'">
                             <img
-                            onclick="deleteTask(${index})"
-                            src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
+                                src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
+                            />
+                            </a>
+                            <img
+                                onclick="deleteTask(${index})"
+                                src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
                             />
                             </div>
                             </div>
                             `;
     });
+    // onclick="editTask(${index})"
 
-    // <img
-    //     onclick="editTask(${index})"
-    //     src="https://img.icons8.com/glyph-neue/30/ffffff/edit-property.png"
-    // />
     taskListShow.innerHTML = outPut;
     taskItems = document.querySelectorAll(".task");
     console.log(taskItems);

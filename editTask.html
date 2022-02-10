@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./style.css" />
+
+        <title>Tasking</title>
+    </head>
+    <body>
+        <header>
+            <div class="container">
+                <nav>
+                    <div class="logo">
+                        <h3><a href="./index.html">Tasking</a></h3>
+                    </div>
+                    <ul class="navbar">
+                        <p>
+                            Hello,
+                            <span>
+                                <script>
+                                    document.write(
+                                        localStorage.getItem("name")
+                                    );
+                                </script>
+                            </span>
+                        </p>
+                        <li class="active">
+                            <a href="./index.html">Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="./profile.html">Profile</a>
+                        </li>
+                        <li><a href="#" onclick="logout()">Logout</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <section class="mainForForm">
+            <div class="container">
+                <div class="forform">
+                    <h5>Edit Task</h5>
+                    <form action="">
+                        <label for="task">Task 🖊 :</label>
+                        <input type="text" name="task" id="task" />
+
+                        <button
+                            class="submitButton"
+                            type="button"
+                            role="button"
+                            onclick="updateTask()"
+                        >
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="container">
+                <h5>
+                    Developed by
+                    <a href="https://dharmjeet.com">Dharmjeet Vaishnav</a>
+                </h5>
+            </div>
+        </footer>
+
+        <script>
+            (function () {
+                if (!localStorage.getItem("name")) {
+                    window.location.href = "signin.html";
+                }
+            })();
+
+            function logout() {
+                localStorage.removeItem("name");
+                localStorage.removeItem("email");
+                // localStorage.removeItem("localItem");
+                window.location.href = "signin.html";
+            }
+
+            var url_string = window.location.href;
+            var url = new URL(url_string);
+            var indexx = url.searchParams.get("index");
+            console.log(indexx);
+
+            let task = document.getElementById("task");
+
+            function displayFields() {
+                console.log(indexx);
+
+                let allTasks = JSON.parse(localStorage.getItem("localItem"));
+                console.log(allTasks);
+
+                let originalTask = allTasks.find((item, index) => {
+                    return index == indexx;
+                });
+
+                console.log(originalTask);
+
+                document.getElementById("task").value = originalTask.task;
+            }
+            displayFields();
+
+            function updateTask() {
+                // let getUser = localStorage.getItem("email");
+
+                let allTasks = JSON.parse(localStorage.getItem("localItem"));
+
+                let originalTask = allTasks.find((item, index) => {
+                    return index == indexx;
+                });
+                // console.log(originalTask);
+                // console.log(users);
+
+                allTasks.forEach((tasku, index) => {
+                    // console.log(task.task == originalTask.task);
+                    if (tasku.task == originalTask.task) {
+                        console.log(tasku.task);
+                        tasku.task = task.value;
+                    }
+                });
+                localStorage.setItem("localItem", JSON.stringify(allTasks));
+
+                // localStorage.setItem("name", originalUser.name);
+
+                alert("Task updated successfully");
+
+                window.location.href = "index.html";
+            }
+        </script>
+    </body>
+</html>
