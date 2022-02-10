@@ -76,7 +76,11 @@
                     ? JSON.parse(localStorage.getItem("users"))
                     : [];
 
-                if (
+                if (email == "") {
+                    alert("Please enter email");
+                } else if (password == "") {
+                    alert("Please enter password");
+                } else if (
                     user_data.some((v) => {
                         return v.email == email && v.password == password;
                     })
@@ -88,7 +92,7 @@
                     localStorage.setItem("email", current_user.email);
                     window.location.href = "index.html";
                 } else {
-                    alert("Login Fail");
+                    alert("E-mail and password are not match in the database");
                 }
 
                 return false;
