@@ -16,17 +16,15 @@
                     <div class="logo">
                         <h3><a href="./index.html">Tasking</a></h3>
                     </div>
+                    <p>
+                        Hello,
+                        <span>
+                            <script>
+                                document.write(localStorage.getItem("name"));
+                            </script>
+                        </span>
+                    </p>
                     <ul class="navbar">
-                        <p>
-                            Hello,
-                            <span>
-                                <script>
-                                    document.write(
-                                        localStorage.getItem("name")
-                                    );
-                                </script>
-                            </span>
-                        </p>
                         <li>
                             <a href="./index.html">Dashboard</a>
                         </li>

@@ -53,7 +53,7 @@ header nav .navbar {
     align-items: center;
 }
 
-header nav .navbar span {
+header nav span {
     font-weight: 600;
 }
 
@@ -172,6 +172,11 @@ header h3 {
 
 .main .left .tasklist {
     margin-bottom: 25px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .main .left .task {
@@ -186,6 +191,10 @@ header h3 {
     align-items: center;
     margin-bottom: 12px;
 }
+
+/* .main .task .task-text {
+    width: 100%;
+} */
 
 .main .left .active {
     background-color: green;
@@ -362,4 +371,95 @@ footer .container {
 
 footer h5 {
     font-size: 16px;
+}
+
+/* CSS FOR: MOBILE RESPONSIVE  */
+
+@media only screen and (max-width: 500px) {
+    .container {
+        width: 90%;
+        margin: 0 auto;
+        /* background: red; */
+    }
+
+    .mainForForm .forform {
+        width: 90%;
+    }
+
+    header {
+        min-height: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    header nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 120px;
+    }
+
+    header .logo {
+        margin-bottom: 8px;
+    }
+
+    header p {
+        margin-bottom: 8px;
+    }
+
+    header .navbar li {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    header .navbar a {
+        font-size: 14px;
+    }
+
+    .mainForForm .forform h5 {
+        font-size: 28px;
+    }
+
+    .mainForForm .forform .profileData h3 {
+        font-size: 14px;
+    }
+
+    .mainForForm .forform .profileData a {
+        padding: 12px 18px;
+    }
+
+    .main .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .main .container .left,
+    .main .container .right {
+        width: 90%;
+        margin-right: 0px;
+        margin-left: 0px;
+    }
+
+    .main .left h5 {
+        font-size: 24px;
+    }
+
+    .main .left form {
+        width: 85%;
+    }
+
+    .main .left form input {
+        width: 75%;
+    }
+
+    .main .left .task {
+        width: 100%;
+    }
+
+    .main .task .task-text {
+        width: 240px;
+    }
 }
