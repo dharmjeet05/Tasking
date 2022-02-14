@@ -167,9 +167,16 @@ function deleteTask(taskItem, indexx) {
     showList();
 }
 
-// TODO: Clear task is remaining
 function clearTask() {
-    localStorage.removeItem("localItem");
+    let localItems = JSON.parse(localStorage.getItem("localItem"));
+    let mainItems = [];
+    localItems.forEach((item) => {
+        if (!(item.user == localStorage.getItem("email"))) {
+            mainItems.push(item);
+        }
+    });
+    console.log(mainItems);
+    localStorage.setItem("localItem", JSON.stringify(mainItems));
     showList();
 }
 
