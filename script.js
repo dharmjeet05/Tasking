@@ -31,6 +31,7 @@ addTaskBtn.addEventListener("click", () => {
         console.log(randomNumber);
 
         taskList.push({
+            id: randomNumber,
             user: getUser,
             task: inputValue.value,
             status: 0,
@@ -74,7 +75,7 @@ function showList() {
                             <div class="task-text">${taskItem.task}</div>
                             <div class="task-actions">
                             <img 
-                                onclick="completeTask(${index})"
+                                onclick="completeTask(${taskItem.id}, ${index})"
                                 src="https://img.icons8.com/glyph-neue/34/ffffff/checked.png"
                             />
                             
@@ -84,7 +85,7 @@ function showList() {
                             />
                             </a>
                             <img
-                                onclick="deleteTask(${index})"
+                                onclick="deleteTask(${taskItem.id}, ${index})"
                                 src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
                             />
                             </div>
@@ -96,7 +97,7 @@ function showList() {
                             <div class="task-text">${taskItem.task}</div>
                             <div class="task-actions">
                             <img
-                                onclick="completeTask(${index})"
+                                onclick="completeTask(${taskItem.id}, ${index})"
                                 src="https://img.icons8.com/glyph-neue/34/ffffff/checked.png"
                             />
 
@@ -106,7 +107,7 @@ function showList() {
                             />
                             </a>
                             <img
-                                onclick="deleteTask(${index})"
+                                onclick="deleteTask(${taskItem.id}, ${index})"
                                 src="https://img.icons8.com/ios-glyphs/30/ffffff/filled-trash.png"
                             />
                             </div>
@@ -142,35 +143,65 @@ function showList() {
 }
 showList();
 
-function deleteTask(index) {
-    // let localItems = JSON.parse(localStorage.getItem("localItem"));
+function deleteTask(taskItem, indexx) {
+    let mainItem = JSON.parse(localStorage.getItem("localItem"));
+    // mainItem[indexx].status = mainItem[indexx].status == 0 ? 1 : 0;
+    console.log(indexx);
+    let originalItem = mainItem.find((item) => {
+        return item.id == taskItem;
+    });
+    console.log(originalItem);
+    mainItem.splice(indexx, 1);
 
-    taskList.splice(index, 1);
-
-    localStorage.setItem("localItem", JSON.stringify(taskList));
+    console.log(mainItem);
+    // if (
+    //     taskItems[indexx].classList.contains("active") &&
+    //     mainItem[indexx].status === 0
+    // ) {
+    //     taskItems[indexx].classList.remove("active");
+    // } else {
+    //     taskItems[indexx].classList.add("active");
+    // }
+    localStorage.setItem("localItem", JSON.stringify(mainItem));
 
     showList();
 }
 
+// TODO: Clear task is remaining
 function clearTask() {
     localStorage.removeItem("localItem");
     showList();
 }
 
-function completeTask(indexx) {
+function completeTask(taskItem, indexx) {
     let mainItem = JSON.parse(localStorage.getItem("localItem"));
-    mainItem[indexx].status = mainItem[indexx].status == 0 ? 1 : 0;
+    // mainItem[indexx].status = mainItem[indexx].status == 0 ? 1 : 0;
+    console.log(indexx);
+    let originalItem = mainItem.find((item) => {
+        return item.id == taskItem;
+    });
+    console.log(originalItem);
+    mainItem.splice(indexx, 1);
 
-    localStorage.setItem("localItem", JSON.stringify(mainItem));
-
-    if (
-        taskItems[indexx].classList.contains("active") &&
-        mainItem[indexx].status === 0
-    ) {
-        taskItems[indexx].classList.remove("active");
+    // let status = originalItem.status;
+    if (originalItem.status == 0) {
+        originalItem.status = 1;
     } else {
-        taskItems[indexx].classList.add("active");
+        originalItem.status = 0;
     }
+
+    mainItem.push(originalItem);
+
+    console.log(mainItem);
+    // if (
+    //     taskItems[indexx].classList.contains("active") &&
+    //     mainItem[indexx].status === 0
+    // ) {
+    //     taskItems[indexx].classList.remove("active");
+    // } else {
+    //     taskItems[indexx].classList.add("active");
+    // }
+    localStorage.setItem("localItem", JSON.stringify(mainItem));
 
     showList();
 }
