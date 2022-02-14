@@ -25,11 +25,13 @@ addTaskBtn.addEventListener("click", () => {
             taskList = localItems;
         }
 
+        let getUser = localStorage.getItem("email");
+
         let randomNumber = Math.round(Math.random() * 100000);
         console.log(randomNumber);
 
         taskList.push({
-            id: randomNumber,
+            user: getUser,
             task: inputValue.value,
             status: 0,
         });
@@ -53,6 +55,8 @@ function showList() {
     // let completedDiv = document.querySelector(".completed");
     let localItems = JSON.parse(localStorage.getItem("localItem"));
 
+    let userEmail = localStorage.getItem("email");
+
     if (localItems === null) {
         taskList = [];
     } else {
@@ -60,11 +64,11 @@ function showList() {
     }
 
     taskList.forEach((taskItem, index) => {
-        if (taskItem.status === 1) {
+        if (taskItem.status === 1 && taskItem.user == userEmail) {
             outputMiddleText = `<h3>Completed Task</h3>`;
         }
 
-        if (taskItem.status === 0) {
+        if (taskItem.status === 0 && taskItem.user == userEmail) {
             outPut += `
                         <div class="task"> 
                             <div class="task-text">${taskItem.task}</div>
@@ -86,7 +90,7 @@ function showList() {
                             </div>
                             </div>
                             `;
-        } else {
+        } else if (taskItem.status === 1 && taskItem.user == userEmail) {
             outPutTwo += `
                         <div class="task active">
                             <div class="task-text">${taskItem.task}</div>
