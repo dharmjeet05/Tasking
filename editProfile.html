@@ -121,15 +121,10 @@
 
             function updateProfile() {
                 let getUser = localStorage.getItem("email");
-
                 let users = JSON.parse(localStorage.getItem("users"));
-
                 let originalUser = users.find((item) => {
                     return item.email == getUser;
                 });
-                // console.log(originalUser);
-                // console.log(users);
-
                 users.forEach((user, index) => {
                     if (user.name == localStorage.getItem("name")) {
                         users[index].name = name.value;
@@ -138,8 +133,22 @@
                         users[index].email = email.value;
                     }
                 });
-                localStorage.setItem("users", JSON.stringify(users));
 
+                let localItems = JSON.parse(localStorage.getItem("localItem"));
+                console.log(localItems);
+                localItems.forEach((item, index) => {
+                    console.log(item, index);
+                    console.log(localItems[index].user);
+                    console.log(email.value);
+                    console.log(item.user == localStorage.getItem("email"));
+                    if (item.user == getUser) {
+                        localItems[index].user = email.value;
+                    }
+                });
+                console.log(localItems);
+                localStorage.setItem("localItem", JSON.stringify(localItems));
+
+                localStorage.setItem("users", JSON.stringify(users));
                 localStorage.setItem("name", originalUser.name);
                 localStorage.setItem("email", originalUser.email);
 
