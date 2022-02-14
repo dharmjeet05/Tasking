@@ -44,6 +44,8 @@
                     <form action="">
                         <label for="name">Name 🖊 :</label>
                         <input type="text" name="name" id="name" />
+                        <label for="email">E-mail 📧 :</label>
+                        <input type="email" name="email" id="email" />
                         <label for="mobile">Mobile 📱 :</label>
                         <input type="number" name="mobile" id="mobile" />
                         <label for="dob">Date Of Birth 🎂 :</label>
@@ -92,6 +94,7 @@
             name = document.getElementById("name");
             mobile = document.getElementById("mobile");
             dob = document.getElementById("dob");
+            email = document.getElementById("email");
 
             // window.addEventListener("load", (event) => {
             //     event.preventDefault();
@@ -112,6 +115,7 @@
                 name.value = originalUser.name;
                 mobile.value = originalUser.mobile;
                 dob.value = originalUser.dob;
+                email.value = originalUser.email;
             }
             displayFields();
 
@@ -131,11 +135,13 @@
                         users[index].name = name.value;
                         users[index].mobile = mobile.value;
                         users[index].dob = dob.value;
+                        users[index].email = email.value;
                     }
                 });
                 localStorage.setItem("users", JSON.stringify(users));
 
                 localStorage.setItem("name", originalUser.name);
+                localStorage.setItem("email", originalUser.email);
 
                 alert("Profile updated successfully");
 
