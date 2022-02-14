@@ -196,7 +196,7 @@ function weatherApp() {
                         document.querySelector(".temp").innerHTML = temp + "°C";
                         document.querySelector(".desc").innerHTML = description;
                         document.querySelector(".wind").innerHTML =
-                            "Wind speed : " + speed;
+                            "Wind speed : " + speed + " km/h";
                     })
                     .catch((error) => console.log(error));
             });
@@ -262,20 +262,7 @@ function displayGif(url) {
 }
 gifApp();
 setInterval(() => {
-    // function gifApp() {
-    //     fetch(
-    //         `https://api.giphy.com/v1/gifs/random?api_key=w5kVyG3lzcm2yQNbIHsIImohiaZCklHH`
-    //     )
-    //         .then((response) => response.json())
-    //         .then((data) => displayGif(data.data.images.downsized_medium.url));
-    // }
     gifApp();
-
-    // function displayGif(url) {
-    //     const gifDiv = document.querySelector(".gif");
-
-    //     gifDiv.innerHTML = `<img src="${url}" style="width: 180px;" alt="gif">`;
-    // }
 }, 20000);
 
 // Time and Date
