@@ -124,6 +124,13 @@
                 let originalUser = users.find((item) => {
                     return item.email == getUser;
                 });
+
+                let myUser = users.find((v) => {
+                    return v.email == email.value;
+                });
+
+                console.log(myUser.email);
+
                 var validemail =
                     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
@@ -135,15 +142,9 @@
                     alert("Please enter valid email address");
                 } else if (!(mobile.value.length === 10)) {
                     alert("Please enter valid mobile number");
-                }
-                // else if (
-                //     users.some((v) => {
-                //         return v.email == email.value;
-                //     })
-                // ) {
-                //     alert("This email is already register in system");
-                // }
-                else {
+                } else if (!(myUser.email == getUser)) {
+                    alert("This email is already in the system");
+                } else {
                     users.forEach((user, index) => {
                         if (user.name == localStorage.getItem("name")) {
                             users[index].name = name.value;
