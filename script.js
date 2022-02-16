@@ -15,7 +15,8 @@ const inputValue = document.getElementById("task");
 const addTaskBtn = document.getElementsByClassName("addButton")[0];
 let taskItems;
 
-addTaskBtn.addEventListener("click", () => {
+addTaskBtn.addEventListener("click", (e) => {
+    e.preventDefault();
     if (!inputValue.value.trim() == "") {
         let localItems = JSON.parse(localStorage.getItem("localItem"));
 
