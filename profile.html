@@ -136,16 +136,18 @@
                 console.log(originalUser);
                 console.log(users);
 
-                users.forEach((user, index) => {
-                    if (user.email == localStorage.getItem("email")) {
-                        users[index].password = password;
-                    }
-                    localStorage.setItem("users", JSON.stringify(users));
-                });
-
-                document.getElementById("myform").reset();
-
-                alert("Password changed successfully");
+                if (password.length < 5) {
+                    alert("Please enter minimum 5 characters of password");
+                } else {
+                    users.forEach((user, index) => {
+                        if (user.email == localStorage.getItem("email")) {
+                            users[index].password = password;
+                        }
+                        localStorage.setItem("users", JSON.stringify(users));
+                    });
+                    document.getElementById("myform").reset();
+                    alert("Password changed successfully");
+                }
             }
         </script>
     </body>
